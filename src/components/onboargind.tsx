@@ -4,8 +4,10 @@ import Animated, {
   FadeInDown,
   FadeOutDown,
   LinearTransition,
+  PinwheelIn,
+  PinwheelOut,
 } from "react-native-reanimated";
-
+import { MaterialIcons } from "@expo/vector-icons";
 type Props = {
   selectedIndex: number;
   onIndexChange: (index: number) => void;
@@ -39,22 +41,31 @@ export default function Onboarding({
         {selectedIndex > 0 && (
           <Button
             onPress={onBackHandle}
-            className="bg-gray-300 px-6 py-4 items-center rounded-full"
+            className="bg-gray-400 px-6 py-4 items-center rounded-full"
           >
-            <Text>Back</Text>
+            <Text className="text-white font-bold text-lg">Back</Text>
           </Button>
         )}
         <Button
           onPress={onContinueHandle}
-          className="flex-1 bg-blue-500 p-4 items-center rounded-full"
+          className="flex-1 bg-blue-500 p-4 items-center rounded-full flex-row gap-2 justify-center"
         >
+          {selectedIndex === totalPages - 1 && (
+            <Animated.View
+              layout={layoutTransition}
+              entering={PinwheelIn.delay(300)}
+              exiting={FadeOutDown}
+            >
+              <MaterialIcons name="check-circle" size={24} color="white" />
+            </Animated.View>
+          )}
           {selectedIndex === totalPages - 1 ? (
             <Animated.Text
               key="finish-button"
               layout={layoutTransition}
               entering={FadeInDown.springify().damping(80).stiffness(200)}
               exiting={FadeOutDown.springify().damping(80).stiffness(200)}
-              className="text-white"
+              className="text-white font-bold text-lg"
             >
               Finish
             </Animated.Text>
@@ -64,7 +75,7 @@ export default function Onboarding({
               layout={layoutTransition}
               entering={FadeInDown.springify().damping(80).stiffness(200)}
               exiting={FadeOutDown.springify().damping(80).stiffness(200)}
-              className="text-white"
+              className="text-white font-bold text-lg"
             >
               Continue
             </Animated.Text>
