@@ -5,7 +5,6 @@ import Animated, {
   FadeOutDown,
   LinearTransition,
   PinwheelIn,
-  PinwheelOut,
 } from "react-native-reanimated";
 import { MaterialIcons } from "@expo/vector-icons";
 type Props = {
