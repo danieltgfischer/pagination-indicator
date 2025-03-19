@@ -23,21 +23,18 @@ export default function Onboarding({
 }: Props) {
   const onBackHandle = () => {
     if (selectedIndex > 0) {
-      console.log("Back button pressed");
       onIndexChange(selectedIndex - 1);
     }
   };
 
   const onContinueHandle = () => {
     if (selectedIndex < totalPages - 1) {
-      console.log("Continue button pressed");
       onIndexChange(selectedIndex + 1);
     }
   };
 
   return (
-    <View className="flex-1 items-start justify-center w-full">
-      <Text>Onboarding {selectedIndex}</Text>
+    <View className="items-start justify-center w-full">
       <View className="flex-row gap-4 justify-start w-full px-2">
         {selectedIndex > 0 && (
           <Button
