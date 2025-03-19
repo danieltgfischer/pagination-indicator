@@ -61,10 +61,9 @@ export default function Onboarding({
           {selectedIndex === totalPages - 1 ? (
             <Animated.Text
               key="finish-button"
-              layout={layoutTransition}
               entering={FadeInDown.springify().damping(80).stiffness(200)}
               exiting={FadeOutDown.springify().damping(80).stiffness(200)}
-              className="text-white font-bold text-lg"
+              className="text-white font-bold text-lg relative left-0"
             >
               Finish
             </Animated.Text>
